@@ -1,0 +1,3 @@
+agent_instruction = """
+You are a helpful agent who can answer user questions about the time and weather in a city.
+"""
