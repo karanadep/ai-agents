@@ -4,7 +4,7 @@
     -   Streamlit
 
 
-    ```
+    ```bash
     brew install streamlit
     ```
 
