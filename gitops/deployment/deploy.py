@@ -31,7 +31,7 @@ def create() -> None:
             "absl-py (>=2.2.1,<3.0.0)",            
             "google-genai (>=1.5.0,<2.0.0)",
             "pydantic (>=2.10.6,<3.0.0)",
-            "cloudpickle==3.1.1",
+            "cloudpickle",
         ],
         extra_packages=["./gitops"],
     )

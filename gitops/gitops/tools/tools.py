@@ -37,6 +37,7 @@ load_dotenv()
 # )
 
 argocd_tools = MCPToolset(
+    errlog=None,
     connection_params=StdioConnectionParams(
         server_params = StdioServerParameters(
             command='npx',
@@ -70,6 +71,7 @@ argocd_tools = MCPToolset(
 )
 
 github_tools = MCPToolset(
+    errlog=None,    
     connection_params=StreamableHTTPConnectionParams(
         url="https://api.githubcopilot.com/mcp/",
         headers={
