@@ -6,3 +6,4 @@ documentation/temp_dir
 .pytest_cache/
 __pycache__
 .env
+trash
