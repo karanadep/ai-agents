@@ -3,15 +3,15 @@
 -   Python 3.11+
 -   Streamlit
 
-    ```bash
-    brew install streamlit
-    ```
+```bash
+brew install streamlit
+```
 
 ## Configurations
 
-        ```bash
-        export GOOGLE_CLOUD_PROJECT=<your-project-id>
-        ```
+```bash
+export GOOGLE_CLOUD_PROJECT=<your-project-id>
+```
 
 ## Running UI Locally
 
