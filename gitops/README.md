@@ -24,7 +24,9 @@ The key features of the Gitops include:
 
 This diagram shows the detailed architecture of the agents and tools used
 to implement this workflow.
-<img src="gitops.png" alt="gitops" width="800"/>
+
+- TODO - add design here
+<!-- <img src="gitops.png" alt="gitops" width="800"/> -->
 
 ## Setup and Installation
 
