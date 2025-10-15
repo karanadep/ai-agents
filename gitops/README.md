@@ -16,7 +16,7 @@ The key features of the Gitops include:
 | **Components**  | Tools |
 | **Vertical**  | DevOps |
 
-
+<img src="./docs/high-level-overview.png" alt="gitops" width="800"/>
 
 ### Agent architecture:
 
