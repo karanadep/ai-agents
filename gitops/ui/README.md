@@ -1,9 +1,9 @@
 ## Setup and Installation
 
-    *   Python 3.11+
-    *   Streamlit
+    -   Python 3.11+
+    -   Streamlit
 
-    
+
     ```
     brew install streamlit
     ```
