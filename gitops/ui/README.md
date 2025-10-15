@@ -1,8 +1,23 @@
+## Setup and Installation
+
+    *   Python 3.11+
+    *   Streamlit
+    
+    ```
+    brew install streamlit
+    ```
+
 ## Configurations
 
         ```bash
         export GOOGLE_CLOUD_PROJECT=<your-project-id>
         ```
+
+## Running UI Locally
+
+```
+uv run streamlit run main.py --server.port=8080 --server.enableCORS=false
+```
 
 ## Deployment to Cloud Run
 
