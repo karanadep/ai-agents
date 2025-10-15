@@ -16,7 +16,7 @@ The key features of the Gitops include:
 | **Complexity**  | Easy |
 | **Agent Type**  | Single Agent |
 | **Components**  | Tools |
-| **Vertical**  | Travel |
+| **Vertical**  | DevOps |
 
 
 
