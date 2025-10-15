@@ -50,8 +50,8 @@ to implement this workflow.
 
     ```bash
     # Clone this repository.
-    git clone https://github.com/dexcom-inc/gitops.git
-    cd ai-agent
+    git clone https://github.com/karanadep/ai-agents.git
+    cd gitops
     # Install the package and dependencies.
     # Note for Linux users: If you get an error related to `keyring` during the installation, you can disable it by running the following command:
     # poetry config keyring.enabled false
