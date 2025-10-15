@@ -9,7 +9,7 @@ brew install streamlit
 
 ## Configurations
 
-```bash
+```
 export GOOGLE_CLOUD_PROJECT=<your-project-id>
 ```
 
