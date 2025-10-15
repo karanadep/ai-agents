@@ -1,4 +1,4 @@
-# Gitops
+# Gitops Consolidator Agent
 
 ## Overview
 
