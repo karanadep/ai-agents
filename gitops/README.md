@@ -2,9 +2,9 @@
 
 ## Overview
 
-Gitops is a lightweight AI agent that builds and deploys microservices.
+Gitops Consolidator Agent is a lightweight AI agent that builds and deploys microservices.
 
-<img src="./docs/high-level-overview.png" alt="gitops" width="800"/>
+<img src="./docs/high-level-overview.png" alt="gitops" width="400"/>
 
 ## Agent Details
 
