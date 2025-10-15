@@ -1,0 +1,71 @@
+# Existing global values (adjust these if your current chart has different defaults)
+image:
+  repository: nginx # Updated to use public nginx image
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 80 # Replace with your application's service port
+
+# Fallback for single deployment or global defaults if regions is not used or specific region values are missing.
+# These values will be used if .Values.regions is not defined, ensuring backward compatibility.
+replicaCount: 1 # Default replica count for single deployment
+resources: {} # Default resources for single deployment
+env: [] # Default environment variables for single deployment
+labels: {} # Default labels for single deployment
+podAnnotations: {} # Default pod annotations
+
+# Multi-region configuration
+# If 'regions' is defined, the chart will deploy multiple instances
+# based on the configurations below.
+regions:
+  us-west:
+    enabled: true # Set to false to disable deployment in this region
+    replicaCount: 5
+    # Suffix for resource names (e.g., your-app-us-west).
+    # This is handled dynamically in deployment.yaml.p
+    labels:
+      environment: production
+      region: us-west
+      app.kubernetes.io/instance: your-app-us-west # Example: specific instance label
+    env:
+      - name: REGION_NAME
+        value: "us-west"
+      - name: CUSTOM_SETTING_WEST
+        value: "value-for-us-west" # Region-specific environment variable
+    resources:
+      limits:
+        cpu: 200m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+
+  us-east:
+    enabled: true # Set to false to disable deployment in this region
+    replicaCount: 2
+    labels:
+      environment: production
+      region: us-east
+      app.kubernetes.io/instance: your-app-us-east # Example: specific instance label
+    env:
+      - name: REGION_NAME
+        value: "us-east"
+      - name: CUSTOM_SETTING_EAST
+        value: "value-for-us-east" # Region-specific environment variable
+    resources:
+      limits:
+        cpu: 150m
+        memory: 192Mi
+      requests:
+        cpu: 75m
+        memory: 96Mi
+
+# You can add other global configuration here like:
+# nodeSelector: {}
+# affinity: {}
+# tolerations: []
+# podSecurityContext: {}
+# securityContext: {}
+# imagePullSecrets: []
