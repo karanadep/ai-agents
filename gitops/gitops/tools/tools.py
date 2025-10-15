@@ -50,5 +50,10 @@ github_tools = MCPToolset(
         "get_issue",
         "list_pull_requests",
         "get_pull_request",
+        "create_pull_request",
+        "merge_pull_request",
+        "pull_request_review_write"
+        "create_branch",
+        "create_or_update_file"
     ],
 )

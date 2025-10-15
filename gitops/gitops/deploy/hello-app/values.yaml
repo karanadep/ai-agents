@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: nginx # You can change this to any hello world image, e.g., "nginxdemos/hello"
+  pullPolicy: IfNotPresent
+  tag: stable # or a specific version like "1.21.6"
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
