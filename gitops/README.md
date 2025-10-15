@@ -4,6 +4,8 @@
 
 Gitops is a lightweight AI agent that builds and deploys microservices.
 
+<img src="./docs/high-level-overview.png" alt="gitops" width="800"/>
+
 ## Agent Details
 
 The key features of the Gitops include:
@@ -15,8 +17,6 @@ The key features of the Gitops include:
 | **Agent Type**  | Single Agent |
 | **Components**  | Tools |
 | **Vertical**  | DevOps |
-
-<img src="./docs/high-level-overview.png" alt="gitops" width="800"/>
 
 ### Agent architecture:
 
