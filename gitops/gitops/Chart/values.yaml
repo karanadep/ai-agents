@@ -1,32 +1,20 @@
-# Global configuration for the application
-replicaCount: 1 # Default replica count for single deployment
-
+# Existing global values (adjust these if your current chart has different defaults)
 image:
-  repository: nginx # Updated to use public nginx image
+  repository: your-app-image # Replace with your actual image repository
   pullPolicy: IfNotPresent
-  tag: "stable" # or a specific version like "1.21.6"
+  tag: "latest"
 
 service:
   type: ClusterIP
   port: 80 # Replace with your application's service port
 
-# Default resources for single deployment
-resources:
-  limits:
-    cpu: 100m
-    memory: 128Mi
-  requests:
-    cpu: 50m
-    memory: 64Mi
-
-# Default environment variables for single deployment
-env: []
-
-# Default labels for single deployment
-labels: {}
-
-# Default pod annotations
-podAnnotations: {}
+# Fallback for single deployment or global defaults if regions is not used or specific region values are missing.
+# These values will be used if .Values.regions is not defined, ensuring backward compatibility.
+replicaCount: 1 # Default replica count for single deployment
+resources: {} # Default resources for single deployment
+env: [] # Default environment variables for single deployment
+labels: {} # Default labels for single deployment
+podAnnotations: {} # Default pod annotations
 
 # Multi-region configuration
 # If 'regions' is defined, the chart will deploy multiple instances
@@ -36,7 +24,7 @@ regions:
     enabled: true # Set to false to disable deployment in this region
     replicaCount: 5
     # Suffix for resource names (e.g., your-app-us-west).
-    # This is handled dynamically in deployment.yaml
+    # This is handled dynamically in deployment.yaml.
     labels:
       environment: production
       region: us-west

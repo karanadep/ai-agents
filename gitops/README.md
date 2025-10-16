@@ -2,9 +2,9 @@
 
 ## Overview
 
-Gitops is a lightweight AI agent that builds and deploys microservices.
+Gitops Consolidator Agent is a lightweight AI agent that builds and deploys microservices.
 
-<img src="./docs/high-level-overview.png" alt="Gitops" width="800"/>
+<img src="./docs/high-level-overview.png" alt="gitops" width="400"/>
 
 ## Agent Details
 
@@ -18,15 +18,12 @@ The key features of the Gitops include:
 | **Components**  | Tools |
 | **Vertical**  | DevOps |
 
-
-
 ### Agent architecture:
 
 This diagram shows the detailed architecture of the agents and tools used
 to implement this workflow.
 
-- TODO - add design here
-<!-- <img src="gitops.png" alt="gitops" width="800"/> -->
+<img src="./docs/gitops.png" alt="gitops" width="800"/>
 
 ## Setup and Installation
 
@@ -128,6 +125,10 @@ blank. Here are some example requests you may ask the Gitops to verify:
 ```
 List applications deployed by CAMS team in dev cluster
 create new application in release engineering project
+```
+
+```
+use argocd mcp. create app guestbook, disable auto sync. repo - https://github.com/argoproj/argocd-example-apps . path - helm-guestbook . cluster - http://cluster-test-cluster:8001.
 ```
 
 ## Deployment
