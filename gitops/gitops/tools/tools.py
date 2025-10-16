@@ -52,8 +52,18 @@ github_tools = MCPToolset(
         "get_pull_request",
         "create_pull_request",
         "merge_pull_request",
-        "pull_request_review_write"
+        "pull_request_review_write",
         "create_branch",
-        "create_or_update_file"
+        "create_or_update_file",
+        "get_file",
+        "list_files",
+        "get_directory_contents",
+        "add_comment_to_pending_review",
+        "request_copilot_review",
+        "update_pull_request",
+        "update_pull_request_branch",
+        "create_pull_request_with_copilot",
+        "get_file_contents",
+        "search_code"
     ],
 )
