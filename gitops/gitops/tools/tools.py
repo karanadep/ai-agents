@@ -4,6 +4,7 @@ import requests
 
 from google.adk.tools.mcp_tool import MCPToolset, StreamableHTTPConnectionParams
 from google.adk.tools.mcp_tool.mcp_session_manager import StdioConnectionParams
+from kubernetes_tools import MCPToolset, StreamableHTTPConnectionParams, HTTPServerParameters
 from mcp import StdioServerParameters
 
 from dotenv import load_dotenv
@@ -101,5 +102,44 @@ github_tools = MCPToolset(
         "create_pull_request_with_copilot",
         "get_file_contents",
         "search_code"
+    ],
+)
+
+kubernetes_tools = MCPToolset(
+    errlog=None,
+    connection_params=StdioConnectionParams(
+        server_params = StdioServerParameters(
+            command='npx',
+            args=[
+                "-y",
+                "kubernetes-mcp-server@latest",
+            ],
+            env={
+                "KUBECONFIG": "/path/to/your/kubeconfig"
+            }
+        ),
+    ),
+    # You can filter for specific Maps tools if needed:
+    tool_filter=[
+        "configuration_contexts_list",
+        "configuration_view",
+        "events_list",
+        "namespaces_list",
+        "projects_list",
+        "pods_list",
+        "pods_list_in_namespace",
+        "pods_get",
+        "pods_delete",
+        "pods_top",
+        "pods_exec",
+        "pods_log",
+        "pods_run",
+        "resources_list",
+        "resources_get",
+        "resources_create_or_update",
+        "resources_delete",
+        "helm_install",
+        "helm_list",
+        "helm_uninstall"
     ],
 )
