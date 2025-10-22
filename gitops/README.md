@@ -143,7 +143,7 @@ create app guestbook,
 - target revision: master
 - syncpolicy: use default
 - set create destination namespace
-
+- use default retry
 
 and sync it.
 ```
