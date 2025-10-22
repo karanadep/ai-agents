@@ -125,10 +125,35 @@ blank. Here are some example requests you may ask the Gitops to verify:
 ```
 List applications deployed by CAMS team in dev cluster
 create new application in release engineering project
+list applications in release engineering project
 ```
 
 ```
 use argocd mcp. create app guestbook, disable auto sync. repo - https://github.com/argoproj/argocd-example-apps . path - helm-guestbook . cluster - http://cluster-test-cluster:8001.
+```
+
+```
+create app guestbook,
+- repo: https://github.com/argoproj/argocd-example-apps
+- path: helm-guestbook
+- cluster: http://cluster-dev-k8s:8001
+- project: release-engineering
+- destination namespace: helm-guestbook
+- application namespace: release-engineering
+- target revision: master
+- syncpolicy: use default
+- set create destination namespace
+
+
+and sync it.
+```
+
+```
+describe application guestbook in release-engineering namespace
+
+sync application guestbook in release-engineering namespace
+
+delete application guestbook in release-engineering namespace
 ```
 
 ## Deployment
