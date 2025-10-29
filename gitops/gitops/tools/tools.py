@@ -143,3 +143,6 @@ github_tools = MCPToolset(
 #         "helm_uninstall"
 #     ],
 # )
+
+# The agent uses GitHub MCP tools directly for all operations
+# No additional helper functions needed - the agent leverages the MCP tools

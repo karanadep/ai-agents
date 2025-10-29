@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: data-pipeline-team
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/your-org/gitops
+    targetRevision: HEAD
+    path: gitops/Chart
+    helm:
+      valueFiles:
+        - $values/gitops/helm-overrides/data-pipeline-team/dev/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: data-pipeline-team
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
