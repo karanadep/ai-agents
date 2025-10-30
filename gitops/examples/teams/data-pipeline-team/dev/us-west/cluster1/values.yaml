@@ -1,0 +1,33 @@
+# Data Pipeline Team - Dev Environment - US West - Cluster 1
+image:
+  repository: nginx
+  tag: "1.21.6"
+  pullPolicy: IfNotPresent
+
+replicaCount: 2
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+env:
+  - name: ENVIRONMENT
+    value: "dev"
+  - name: REGION
+    value: "us-west"
+  - name: CLUSTER
+    value: "cluster1"
+  - name: TEAM
+    value: "data-pipeline-team"
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  host: data-pipeline-dev-us-west.example.com
