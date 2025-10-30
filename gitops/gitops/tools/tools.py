@@ -71,39 +71,39 @@ argocd_tools = MCPToolset(
 #     ],
 # )
 
-# github_tools = MCPToolset(
-#     errlog=None,    
-#     connection_params=StreamableHTTPConnectionParams(
-#         url="https://api.githubcopilot.com/mcp/",
-#         headers={
-#             "Authorization": "Bearer " + os.getenv("GITHUB_PERSONAL_ACCESS_TOKEN"),
-#         },
-#     ),
-#     # Read only tools
-#     tool_filter=[
-#         "search_repositories",
-#         "search_issues",
-#         "list_issues",
-#         "get_issue",
-#         "list_pull_requests",
-#         "get_pull_request",
-#         "create_pull_request",
-#         "merge_pull_request",
-#         "pull_request_review_write",
-#         "create_branch",
-#         "create_or_update_file",
-#         "get_file",
-#         "list_files",
-#         "get_directory_contents",
-#         "add_comment_to_pending_review",
-#         "request_copilot_review",
-#         "update_pull_request",
-#         "update_pull_request_branch",
-#         "create_pull_request_with_copilot",
-#         "get_file_contents",
-#         "search_code"
-#     ],
-# )
+github_tools = MCPToolset(
+    errlog=None,    
+    connection_params=StreamableHTTPConnectionParams(
+        url="https://api.githubcopilot.com/mcp/",
+        headers={
+            "Authorization": "Bearer " + os.getenv("GITHUB_PERSONAL_ACCESS_TOKEN"),
+        },
+    ),
+    # Read only tools
+    tool_filter=[
+        "search_repositories",
+        "search_issues",
+        "list_issues",
+        "get_issue",
+        "list_pull_requests",
+        "get_pull_request",
+        "create_pull_request",
+        "merge_pull_request",
+        "pull_request_review_write",
+        "create_branch",
+        "create_or_update_file",
+        "get_file",
+        "list_files",
+        "get_directory_contents",
+        "add_comment_to_pending_review",
+        "request_copilot_review",
+        "update_pull_request",
+        "update_pull_request_branch",
+        "create_pull_request_with_copilot",
+        "get_file_contents",
+        "search_code"
+    ],
+)
 
 # kubernetes_tools = MCPToolset(
 #     errlog=None,
@@ -143,3 +143,6 @@ argocd_tools = MCPToolset(
 #         "helm_uninstall"
 #     ],
 # )
+
+# The agent uses GitHub MCP tools directly for all operations
+# No additional helper functions needed - the agent leverages the MCP tools

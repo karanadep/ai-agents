@@ -1,0 +1,38 @@
+# Helm Override for Data Pipeline Team - Dev Environment
+# This file will be used by ArgoCD to override the base chart values
+
+image:
+  repository: nginx
+  tag: "1.21.6"
+  pullPolicy: IfNotPresent
+
+replicaCount: 2
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+# Environment-specific overrides
+env:
+  - name: ENVIRONMENT
+    value: "dev"
+  - name: TEAM
+    value: "data-pipeline-team"
+  - name: LOG_LEVEL
+    value: "debug"
+
+# Service configuration
+service:
+  type: ClusterIP
+  port: 80
+
+# Ingress configuration
+ingress:
+  enabled: true
+  host: data-pipeline-dev.example.com
+  tls:
+    enabled: false
