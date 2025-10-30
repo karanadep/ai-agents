@@ -2,7 +2,6 @@ import os
 
 from google.adk.tools.mcp_tool import MCPToolset, StreamableHTTPConnectionParams
 from google.adk.tools.mcp_tool.mcp_session_manager import StdioConnectionParams
-# from kubernetes_tools import MCPToolset, StreamableHTTPConnectionParams, HTTPServerParameters
 from mcp import StdioServerParameters
 
 from dotenv import load_dotenv
@@ -10,14 +9,23 @@ from dotenv import load_dotenv
 load_dotenv()
 
 argocd_tools = MCPToolset(
-    connection_params=StreamableHTTPConnectionParams(
-        url="http://localhost:3000/mcp/",
-        headers={
-            "x-argocd-base-url": os.getenv("ARGOCD_BASE_URL"),
-            "x-argocd-api-token": os.getenv("ARGOCD_API_TOKEN"),
-        },
+    # errlog=None,
+    connection_params=StdioConnectionParams(
+        server_params = StdioServerParameters(
+            command='npx',
+            args=[
+                "-y",
+                "argocd-mcp@latest",
+                "stdio"
+            ],
+            env={
+                "ARGOCD_BASE_URL": os.getenv("ARGOCD_BASE_URL"),
+                "ARGOCD_API_TOKEN": os.getenv("ARGOCD_API_TOKEN"),
+                # Add this if you are using self-signed certificates
+                # "NODE_TLS_REJECT_UNAUTHORIZED": "0",                
+            }
+        ),
     ),
-    # Read only tools
     tool_filter=[
         "list_applications",
         "get_application",
@@ -34,43 +42,6 @@ argocd_tools = MCPToolset(
     ],
 )
 
-# argocd_tools = MCPToolset(
-#     # errlog=None,
-#     connection_params=StdioConnectionParams(
-#         server_params = StdioServerParameters(
-#             command='npx',
-#             args=[
-#                 "-y",
-#                 "argocd-mcp@latest",
-#                 "stdio"
-#             ],
-#             # Pass the API key as an environment variable to the npx process
-#             # This is how the MCP server for Google Maps expects the key.
-#             env={
-#                 "ARGOCD_BASE_URL": os.getenv("ARGOCD_BASE_URL"),
-#                 "ARGOCD_API_TOKEN": os.getenv("ARGOCD_API_TOKEN"),
-#                 # Add this if you are using self-signed certificates
-#                 # "NODE_TLS_REJECT_UNAUTHORIZED": "0",                
-#             }
-#         ),
-#     ),
-#     # You can filter for specific Maps tools if needed:
-#     tool_filter=[
-#         "list_applications",
-#         "get_application",
-#         "create_application",
-#         "update_application",
-#         "delete_application",
-#         "sync_application",
-#         "get_application_resource_tree",
-#         "get_application_managed_resources",
-#         "get_application_workload_logs",
-#         "get_resource_events",
-#         "get_resource_actions",
-#         "run_resource_action",
-#     ],
-# )
-
 github_tools = MCPToolset(
     errlog=None,    
     connection_params=StreamableHTTPConnectionParams(
@@ -79,7 +50,6 @@ github_tools = MCPToolset(
             "Authorization": "Bearer " + os.getenv("GITHUB_PERSONAL_ACCESS_TOKEN"),
         },
     ),
-    # Read only tools
     tool_filter=[
         "search_repositories",
         "search_issues",
@@ -102,6 +72,25 @@ github_tools = MCPToolset(
         "create_pull_request_with_copilot",
         "get_file_contents",
         "search_code"
+    ],
+)
+
+jira_tools = MCPToolset(
+    connection_params=StreamableHTTPConnectionParams(
+        url="http://localhost:3000/mcp/",
+        headers={
+                "JIRA_URL": os.getenv("JIRA_URL"),
+                "JIRA_USERNAME": os.getenv("JIRA_USERNAME"),
+                "JIRA_API_TOKEN": os.getenv("JIRA_API_TOKEN"),
+        },
+    ),
+    tool_filter=[
+        "jira_get_issue",
+        "jira_search",
+        "jira_create_issue",
+        "jira_update_issue",
+        "jira_transition_issue",
+        "jira_add_comment",
     ],
 )
 
